@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="app.js" defer></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        :root{
+            --cell-size :100px;
+            --mark-size: calc( var(--cell-size)*0.9)
+        }
+        .board{
+            height: 100vh;
+            width: 100vw;
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            grid-template-columns: repeat(3, auto);
+            
+        }
+        .items{
+            width: var(--cell-size);
+            height: var(--cell-size) ;
+            background-color: white;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+        .items:first-child ,.items:nth-child(2),.items:nth-child(3){
+            border-top: none;
+        }
+        .items:first-child ,.items:nth-child(4),.items:nth-child(7){
+            border-left: none;
+        }
+        .items:nth-child(3) ,.items:nth-child(6),.items:nth-child(9){
+            border-right: none;
+        }
+        .items:nth-child(7) ,.items:nth-child(8),.items:nth-child(9){
+            border-bottom: none;
+        }
+        .items.x , .items.o{
+            cursor: not-allowed;
+        }
+        .items.x::before{
+            content: '';
+            width:calc(var(--mark-size)*0.15);
+            height: var(--mark-size);
+            background-color: black;
+            transform: rotate(45deg);
+            position: absolute;
+        }
+        
+        .items.x::after{
+            content: '';
+            transform: rotate(-45deg);
+            width:calc(var(--mark-size)*0.15);
+            height: var(--mark-size);
+            background-color: black;
+            /* position: absolute; */
+        }
+
+        .items.o::before{
+            content: '';
+            width: var(--mark-size);
+            height: var(--mark-size);
+            background-color: black;
+            border-radius: 50%;
+            /* position: absolute; */
+        }
+        
+        .items.o::after{
+            content: '';
+            width: calc(var(--mark-size)*0.75);
+            height: calc(var(--mark-size)*0.75);
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+        /*  creating hovering cross and circle */
+        .board.x .items:not(.x):not(.o):hover::before {
+            content: '';
+            width:calc(var(--mark-size)*0.15);
+            height: var(--mark-size);
+            background-color: lightgray;
+            transform: rotate(45deg);
+            position: absolute;
+            /* background-color: red; */
+
+        }
+        .board.x .items:not(.x):not(.o):hover::after{
+            content: '';
+            width:calc(var(--mark-size)*0.15);
+            height: var(--mark-size);
+            background-color: lightgray;
+            transform: rotate(-45deg);
+            position: absolute;
+            /* background-color: red; */
+
+        }
+        .board.o .items:not(.x):not(.o):hover::before {
+            content: '';
+            width: var(--mark-size);
+            height: var(--mark-size);
+            background-color: lightgray;
+            border-radius: 50%;
+        }
+        .board.o .items:not(.x):not(.o):hover::after {
+            content: '';
+            width: calc(var(--mark-size)*0.75);
+            height: calc(var(--mark-size)*0.75);
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="board" id="board">
+
+        <div class="items" data-cell></div>
+        <div class="items" data-cell></div>
+        <div class="items" data-cell></div>
+        <div class="items" data-cell></div>
+        <div class="items" data-cell></div>
+        <div class="items" data-cell></div>
+        <div class="items" data-cell></div>
+        <div class="items" data-cell></div>
+        <div class="items" data-cell></div>
+    </div>
+
+</body>
+</html>
