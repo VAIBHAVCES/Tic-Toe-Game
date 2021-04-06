@@ -28,7 +28,7 @@
         .items{
             width: var(--cell-size);
             height: var(--cell-size) ;
-            background-color: white;
+            /* background-color: white; */
             border: 1px solid black;
             display: flex;
             justify-content: center;
@@ -122,12 +122,35 @@
             border-radius: 50%;
             position: absolute;
         }
+        .gameover{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            background-color: rgb(41, 39, 39);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .gameover button{
+            font-size: 3rem;
+            padding : 0.5rem 0.7rem
+        }
+        .show{
+            display: flex;
+        }
+        #winmessage{
+            color: white;
+            font-size: 2rem;
+        }
     </style>
 </head>
 
 <body>
     
-    <div class="board" id="board">
+    <div class="board"  id="board">
 
         <div class="items" data-cell></div>
         <div class="items" data-cell></div>
@@ -139,6 +162,10 @@
         <div class="items" data-cell></div>
         <div class="items" data-cell></div>
     </div>
-
+    
+    <div class="gameover">
+        <span id = "winmessage"></span>
+        <button>Restart</button>
+    </div>
 </body>
 </html>
